@@ -1,0 +1,41 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
+
+int main()
+{
+    srand(time(0));//ランダム数列を出すためのシードを時間に定義する。
+    int number2;
+    int i=0;
+    int number1 = (rand() % 100) + 1;//時間を参考にして1から100までの数字をランダムに一つ出す
+    printf("数字を入力してください\n");
+    scanf("%d",&number2);//数字を入力する
+    while(i<10)//コンピューターが出した数字と入力した数字が一致するまでループする
+    {
+        if(number1!=number2)//コンピューターが出した数字と入力した数字が違うとき
+        {
+            if(number2>number1)//入力した数字がコンピューターが出した数字よりも大きいとき
+            {
+                printf("高すぎます\n");
+                scanf("%d",&number2);//もう一度数字を入力させる
+                i++;
+            }
+            else//入力した数字がコンピューターが出した数字よりも小さいとき
+            {
+                printf("低すぎます\n");
+                scanf("%d",&number2);//もう一度数字を入力させる
+                i++;
+            }
+        }
+        else//コンピューターが出した数字と入力した数字が一致しているとき
+        {
+            i=1;
+            printf("正解です。\n");
+            break;
+        }
+    }
+    if(i==10)
+    printf("10回以内に答えられなかったのでゲームオーバーです");
+    else
+    return 0;
+}
